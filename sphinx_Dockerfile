@@ -1,0 +1,13 @@
+FROM centos:7.4.1708
+LABEL maintainer="iefcuxy@gmail.com"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN yum makecache \
+    && yum install -y python3-pip \
+    && pip3 install sphinx sphinx-autobuild sphinx_rtd_theme
+
+RUN yum install -y graphviz make \
+    && pip3 install recommonmark
+
+ENTRYPOINT ["/bin/bash"]
